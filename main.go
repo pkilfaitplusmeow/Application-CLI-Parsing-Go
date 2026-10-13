@@ -5,7 +5,10 @@ import (
 	"os"
 )
 
-func correct(fileText string) {
+func edits(fileText string) {
+	lastchar := fileText[len(fileText)-1]
+	fmt.Printf("|%d|", lastchar)
+	fmt.Printf("|%c|", fileText[lastchar])
 
 }
 
@@ -16,5 +19,6 @@ func main() {
 	if err != nil {                   // si le fichier est inexistant
 		fmt.Printf("file not found")
 	}
-	fmt.Printf("%s\n", text)
+	edits(string(text))
+	fmt.Printf("\n%s\n", text)
 }
