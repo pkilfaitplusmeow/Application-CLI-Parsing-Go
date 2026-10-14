@@ -2,26 +2,9 @@ package main
 
 import (
 	"fmt"
+	"initial/src"
 	"os"
 )
-
-func occ(str string, i int) int {
-	i++
-	switch str[i] {
-	case 'h':
-		return 1
-	case 'b':
-		return 2
-	case 'u':
-		return 3
-	case 'l':
-		return 4
-	case 'c':
-		return 5
-	default:
-		return -1
-	}
-}
 
 func edits(fileText string) {
 	var occurence int
@@ -30,9 +13,9 @@ func edits(fileText string) {
 	fileSize := len(fileText) - 1 // recup la taille du fichier
 	str := make([]byte, fileSize) // string de recup
 	for i := 0; i <= fileSize; i++ {
-		if fileText[i] == '(' {
-			occurence = occ(fileText, i)
-
+		if fileText[i+1] == '(' {
+			occurence = src.Occ(fileText, i)
+			src.CorrectOccurence(fileText, i, occurence, fileSize)
 			for fileText[i-1] != ')' {
 				i++
 			}
