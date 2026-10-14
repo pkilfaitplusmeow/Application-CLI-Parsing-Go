@@ -25,19 +25,24 @@ func occ(str string, i int) int {
 
 func edits(fileText string) {
 	var occurence int
+
+	j := 0
 	fileSize := len(fileText) - 1 // recup la taille du fichier
+	str := make([]byte, fileSize) // string de recup
 	for i := 0; i <= fileSize; i++ {
 		if fileText[i] == '(' {
 			occurence = occ(fileText, i)
-			fmt.Printf("\n%d\n", occurence)
+
 			for fileText[i-1] != ')' {
 				i++
 			}
 		}
-
-		fmt.Printf("%c", fileText[i]) //debg
+		j++
+		str[j] = fileText[i]
 	}
-
+	fmt.Printf("\n----\n%s\n----\n", fileText)
+	fmt.Printf("\n----\n%s\n----\n", str)
+	fmt.Printf("%d", occurence)
 }
 
 func main() {
@@ -48,6 +53,5 @@ func main() {
 		fmt.Printf("file not found\n")
 		panic(err)
 	}
-
 	edits(string(text)) //demande a la fonction d'edit (ptetre juste rediriger vers l'edit en question)
 }
