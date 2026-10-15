@@ -1,7 +1,7 @@
 package src
 
 func Occ(str string, i int) int {
-	i += 2
+	i++
 	switch str[i] {
 	case 'h': //hexa
 		return 1

@@ -13,7 +13,7 @@ func edits(fileText string) {
 	fileSize := len(fileText) - 1 // recup la taille du fichier
 	str := make([]byte, fileSize) // string de recup
 	for i := 0; i <= fileSize; i++ {
-		if fileText[i+1] == '(' {
+		if fileText[i] == '(' {
 			occurence = src.Occ(fileText, i)
 			src.CorrectOccurence(fileText, i, occurence, fileSize)
 			for fileText[i-1] != ')' {
