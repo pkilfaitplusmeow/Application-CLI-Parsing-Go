@@ -1,23 +1,23 @@
 package src
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func CorrectOccurence(fileText string, i int, occurence int, fileSize int) {
 	i--
 	pow := 0
 	var hexa int = 0
-	var a byte
+
+	//dans le cas 1 (hex) retourne en arriere jusqu'au dernier espace et convertie en decimale
 	if occurence == 1 {
-		for fileText[i] != ' ' { //arrive au dernier charactere du mot avant les parenthèses
-			if fileText[i] >= 'A' && fileText[i] <= 'F' {
-				a = fileText[i] - 55          // valeur de la lettre en hexa ('A' = 65 et A(hex) = 10)
-				hexa += int(a) * Pow(16, pow) // hexa = a * (16^dig)
-
-				fmt.Printf("hexa value = %d\n", hexa)
-
-			}
-			pow++ // pour la puissance du 16
+		for fileText[i] != ' ' {
+			hexa += HexaCoverter(fileText, i, pow)
+			pow++ //puissance du 16
 			i--
 		}
+		fmt.Printf("hexa value = %d\n", hexa)
 	}
+	//dans le cas 2 (dec) ...
+
 }
