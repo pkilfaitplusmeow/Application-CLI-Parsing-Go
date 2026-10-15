@@ -17,7 +17,7 @@ func CorrectOccurence(fileText string, i int, occurence int, fileSize int) {
 			i--
 		}
 		fmt.Printf("hexa value = %d\n", hexa)
+		fmt.Printf("%s", string(hexa))
 	}
 	//dans le cas 2 (dec) ...
-
 }
