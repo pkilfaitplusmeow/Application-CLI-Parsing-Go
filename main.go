@@ -16,18 +16,18 @@ func edits(fileText string) {
 		if fileText[i] == '(' {
 			x := 1
 			j--
+			// a := 0
 			occurence = src.Occ(fileText, i) // revoie le type de modif a faire
 			corrected := src.CorrectOccurence(fileText, i-1, occurence, fileSize)
 			for str[j] != ' ' {
 				j--
 			}
-			fmt.Printf("corrected: %s\n", corrected)
 			for x < len(corrected) {
 				j++
 				str[j] = corrected[x]
 				x++
 			}
-			for fileText[i-1] != ')' {
+			for (fileText[i-1] != ')') && (i != fileSize) {
 				i++
 			}
 		}
@@ -35,7 +35,11 @@ func edits(fileText string) {
 		str[j] = fileText[i]
 	}
 	os.WriteFile("output.txt", str, 0022) //ecrit les characters dans le fichier output.txt avec les perms d'ecrire et lire
-	os.Truncate("output.txt", int64(j+1)) //evite tout les espaces a la fin du fichier en limitant la taille
+	if str[j] == ')' {
+		os.Truncate("output.txt", int64(j))
+	} else {
+		os.Truncate("output.txt", int64(j+1)) //evite tout les espaces a la fin du fichier en limitant la taille
+	}
 	fmt.Printf("\n┌———————————————————————————┐\n|file successfully modified!|\n└———————————————————————————┘\n")
 }
 
