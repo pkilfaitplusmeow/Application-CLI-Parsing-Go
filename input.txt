@@ -1,2 +1,2 @@
-vroom la voiture 1AB (hex) c'est sense etre ecrit 427
-et la 1111 (bin) c'est 15
+vroom la voiture 1AD (hex) c'est sense etre ecrit 429
+et la 11110 (bin) c'est 30

@@ -37,6 +37,7 @@ func edits(fileText string) {
 	}
 	fmt.Printf("%s %d", str, j) //jdois ecrire dans le fichier a cette étape.
 	os.WriteFile("output.txt", str, 0777)
+	fmt.Printf("\n┌———————————————————————————┐\n|file successfully modified!|\n└———————————————————————————┘\n")
 }
 
 func main() {

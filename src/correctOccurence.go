@@ -1,9 +1,5 @@
 package src
 
-import (
-	"fmt"
-)
-
 func CorrectOccurence(fileText string, i int, occurence int, fileSize int) []byte {
 	i--
 	pow := 0
@@ -19,7 +15,6 @@ func CorrectOccurence(fileText string, i int, occurence int, fileSize int) []byt
 			i--
 		}
 		deci_Val := DecimalToString(hexa)
-		fmt.Printf("dans correctOccurence en characters: %s\n", deci_Val)
 		return deci_Val
 	}
 	//dans le cas 2 (dec) ...
@@ -30,7 +25,6 @@ func CorrectOccurence(fileText string, i int, occurence int, fileSize int) []byt
 			i--
 		}
 		deci_Val := DecimalToString(bin)
-		fmt.Printf("dans correctOccurence en characters: %s\n", deci_Val)
 		return deci_Val
 	}
 	return cestjustepourlereturn
