@@ -2,16 +2,16 @@ package src
 
 func Occ(str string, i int) int {
 	i++
-	switch str[i] {
-	case 'h': //hexa
+	switch {
+	case str[i] == 'h' && str[i+1] == 'e': //hexa
 		return 1
-	case 'b': //binaire
+	case str[i] == 'b' && str[i+1] == 'i': //binaire
 		return 2
-	case 'u': //uppercase
+	case str[i] == 'u' && str[i+1] == 'p': //uppercase
 		return 3
-	case 'l': //lowercase
+	case str[i] == 'l' && str[i+1] == 'o': //lowercase
 		return 4
-	case 'c': //cap
+	case str[i] == 'c' && str[i+1] == 'a': //cap
 		return 5
 	default:
 		return -1

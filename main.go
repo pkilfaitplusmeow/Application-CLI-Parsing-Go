@@ -21,7 +21,6 @@ func edits(fileText string) {
 
 			for str[j] != ' ' {
 				j--
-
 			}
 			for x < len(deciVal) {
 				j++
