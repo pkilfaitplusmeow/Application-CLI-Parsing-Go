@@ -17,7 +17,7 @@ func CorrectOccurence(fileText string, i int, occurence int, fileSize int) []byt
 		deci_Val := DecimalToString(hexa)
 		return deci_Val
 	}
-	//dans le cas 2 (dec) ...
+	//dans le cas 2 (bin) ...
 	if occurence == 2 {
 		for fileText[i] != ' ' {
 			bin += BinConverter(fileText, i, pow)
@@ -26,6 +26,23 @@ func CorrectOccurence(fileText string, i int, occurence int, fileSize int) []byt
 		}
 		deci_Val := DecimalToString(bin)
 		return deci_Val
+	}
+	//dans le cas 3 (up)
+	if occurence == 3 {
+		j := -1
+		k := i
+		for fileText[k] != ' ' {
+			k--
+			j++
+		}
+
+		str := make([]byte, i-k)
+		for fileText[i] != ' ' {
+			str[j] = fileText[i] - 32
+			j--
+			i--
+		}
+		return str
 	}
 	return cestjustepourlereturn
 }

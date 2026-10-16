@@ -2,6 +2,10 @@ package src
 
 func Occ(str string, i int) int {
 	i++
+	/*
+		regarde les 2 premiere lettre apres une parenthese
+		2 lettres pour eviter les erreurs
+	*/
 	switch {
 	case str[i] == 'h' && str[i+1] == 'e': //hexa
 		return 1

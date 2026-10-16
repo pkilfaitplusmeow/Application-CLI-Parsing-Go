@@ -17,14 +17,14 @@ func edits(fileText string) {
 			x := 1
 			j--
 			occurence = src.Occ(fileText, i) // revoie le type de modif a faire
-			deciVal := src.CorrectOccurence(fileText, i-1, occurence, fileSize)
-
+			corrected := src.CorrectOccurence(fileText, i-1, occurence, fileSize)
 			for str[j] != ' ' {
 				j--
 			}
-			for x < len(deciVal) {
+			fmt.Printf("corrected: %s\n", corrected)
+			for x < len(corrected) {
 				j++
-				str[j] = deciVal[x]
+				str[j] = corrected[x]
 				x++
 			}
 			for fileText[i-1] != ')' {
