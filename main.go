@@ -9,7 +9,7 @@ import (
 func edits(fileText string) {
 	var occurence int
 
-	j := 0
+	j := -1
 	fileSize := len(fileText) - 1 // recup la taille du fichier
 	str := make([]byte, fileSize) // string de recup
 	for i := 0; i <= fileSize; i++ {
@@ -35,8 +35,8 @@ func edits(fileText string) {
 		j++
 		str[j] = fileText[i]
 	}
-	fmt.Printf("%s %d", str, j) //jdois ecrire dans le fichier a cette étape.
-	os.WriteFile("output.txt", str, 0777)
+	os.WriteFile("output.txt", str, 0022) //ecrit les characters dans le fichier output.txt avec les perms d'ecrire et lire
+	os.Truncate("output.txt", int64(j+1)) //evite tout les espaces a la fin du fichier en limitant la taille
 	fmt.Printf("\n┌———————————————————————————┐\n|file successfully modified!|\n└———————————————————————————┘\n")
 }
 
