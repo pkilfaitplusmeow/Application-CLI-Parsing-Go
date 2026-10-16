@@ -38,9 +38,39 @@ func CorrectOccurence(fileText string, i int, occurence int, fileSize int) []byt
 
 		str := make([]byte, i-k)
 		for fileText[i] != ' ' {
-			str[j] = fileText[i] - 32
-			j--
-			i--
+			if fileText[i] >= 'a' && fileText[i] <= 'z' {
+				str[j] = fileText[i] - 32
+				j--
+				i--
+			} else {
+				str[j] = fileText[i]
+				j--
+				i--
+			}
+		}
+		return str
+	}
+
+	//dans le cas 4 (low)
+	if occurence == 4 {
+		j := -1
+		k := i
+		for fileText[k] != ' ' {
+			k--
+			j++
+		}
+
+		str := make([]byte, i-k)
+		for fileText[i] != ' ' {
+			if fileText[i] >= 'A' && fileText[i] <= 'Z' {
+				str[j] = fileText[i] + 32
+				j--
+				i--
+			} else {
+				str[j] = fileText[i]
+				j--
+				i--
+			}
 		}
 		return str
 	}

@@ -35,7 +35,7 @@ func edits(fileText string) {
 		str[j] = fileText[i]
 	}
 	os.WriteFile("output.txt", str, 0022) //ecrit les characters dans le fichier output.txt avec les perms d'ecrire et lire
-	if str[j] == ')' {
+	if str[j] == ')' {                    // si le fichier finis avec une modification
 		os.Truncate("output.txt", int64(j))
 	} else {
 		os.Truncate("output.txt", int64(j+1)) //evite tout les espaces a la fin du fichier en limitant la taille
