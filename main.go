@@ -14,8 +14,20 @@ func edits(fileText string) {
 	str := make([]byte, fileSize) // string de recup
 	for i := 0; i <= fileSize; i++ {
 		if fileText[i] == '(' {
-			occurence = src.Occ(fileText, i)
-			src.CorrectOccurence(fileText, i, occurence, fileSize)
+			x := 1
+			j--
+			occurence = src.Occ(fileText, i) // revoie le type de modif a faire
+			deciVal := src.CorrectOccurence(fileText, i-1, occurence, fileSize)
+
+			for str[j] != ' ' {
+				j--
+
+			}
+			for x < len(deciVal) {
+				j++
+				str[j] = deciVal[x]
+				x++
+			}
 			for fileText[i-1] != ')' {
 				i++
 			}
@@ -23,9 +35,8 @@ func edits(fileText string) {
 		j++
 		str[j] = fileText[i]
 	}
-	fmt.Printf("\n----\n%s\n----\n", fileText)
-	fmt.Printf("\n----\n%s\n----\n", str)
-	fmt.Printf("%d", occurence)
+	fmt.Printf("%s %d", str, j) //jdois ecrire dans le fichier a cette étape.
+	os.WriteFile("output.txt", str, 0777)
 }
 
 func main() {

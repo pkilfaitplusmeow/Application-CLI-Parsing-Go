@@ -1,3 +1,2 @@
-vroom la 1AA(hex) elle fait vroooom
-le camion il fait pouette pouette !
-le 1BC(hex) il fait pas de bruit ._.
+vroom la voiture 1AB (hex) c'est sense etre ecrit 427
+et la 1111 (bin) c'est 15
