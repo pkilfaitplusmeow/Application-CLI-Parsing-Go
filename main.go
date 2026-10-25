@@ -16,9 +16,9 @@ func edits(fileText string) {
 		if fileText[i] == '(' {
 			x := 1
 			j--
-			// a := 0
-			occurence = src.Occ(fileText, i) // revoie le type de modif a faire
-			corrected := src.CorrectOccurence(fileText, i-1, occurence, fileSize)
+			occurence = src.Occ(fileText, i)                                      // revoie le type de modif a faire
+			corrected := src.CorrectOccurence(fileText, i-1, occurence, fileSize) // renvoie un bytes corrigé
+			//si erreur a gerer (todo)
 			for str[j] != ' ' {
 				j--
 			}
@@ -34,7 +34,7 @@ func edits(fileText string) {
 		j++
 		str[j] = fileText[i]
 	}
-	os.WriteFile("output.txt", str, 0022) //ecrit les characters dans le fichier output.txt avec les perms d'ecrire et lire
+	os.WriteFile("output.txt", str, 0644) //ecrit les characters dans le fichier output.txt avec les perms d'ecrire et lire
 	if str[j] == ')' {                    // si le fichier finis avec une modification
 		os.Truncate("output.txt", int64(j))
 	} else {
@@ -45,11 +45,17 @@ func edits(fileText string) {
 
 func main() {
 
-	fileName := os.Args[1:]               // recup le file name
+	fileName := os.Args[1:] // recup le file name
+
+	//error si fichier vide (todo)
+
 	text, err := os.ReadFile(fileName[0]) // lit le text dans le fichier
-	if err != nil {                       // si le fichier est inexistant
+
+	for err != nil { // si le fichier est inexistant
 		fmt.Printf("file not found\n")
-		panic(err)
+		//fmt.Printf("%s\n", err)
+		// fmt.Scanf("%s", fileName)
+
 	}
 	edits(string(text)) //demande a la fonction d'edit (ptetre juste rediriger vers l'edit en question)
 }
