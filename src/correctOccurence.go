@@ -29,23 +29,29 @@ func CorrectOccurence(fileText string, i int, occurence int, fileSize int) []byt
 	}
 	//dans le cas 3 (up)
 	if occurence == 3 {
-		j := -1
+		j := 0
 		k := i
-		for fileText[k] != ' ' {
+		for fileText[k] != ' ' && !IsPonctuation([]byte(fileText), k) {
 			k--
-			j++
 		}
 
-		str := make([]byte, i-k)
-		for fileText[i] != ' ' {
-			if fileText[i] >= 'a' && fileText[i] <= 'z' {
-				str[j] = fileText[i] - 32
-				j--
-				i--
+		str := make([]byte, i-(k-1)) // size error
+
+		if IsPonctuation([]byte(fileText), k) {
+			str[j] = fileText[k]
+		}
+		k++
+		j++
+
+		for fileText[k] != ' ' {
+			if fileText[k] >= 'a' && fileText[k] <= 'z' {
+				str[j] = fileText[k] - 32
+				j++
+				k++
 			} else {
-				str[j] = fileText[i]
-				j--
-				i--
+				str[j] = fileText[k]
+				j++
+				k++
 			}
 		}
 		return str
@@ -53,23 +59,29 @@ func CorrectOccurence(fileText string, i int, occurence int, fileSize int) []byt
 
 	//dans le cas 4 (low)
 	if occurence == 4 {
-		j := -1
+		j := 0
 		k := i
-		for fileText[k] != ' ' {
+		for fileText[k] != ' ' && !IsPonctuation([]byte(fileText), k) {
 			k--
-			j++
 		}
 
-		str := make([]byte, i-k)
-		for fileText[i] != ' ' {
-			if fileText[i] >= 'A' && fileText[i] <= 'Z' {
-				str[j] = fileText[i] + 32
-				j--
-				i--
+		str := make([]byte, i-(k-1)) // size error
+
+		if IsPonctuation([]byte(fileText), k) {
+			str[j] = fileText[k]
+		}
+		k++
+		j++
+
+		for fileText[k] != ' ' {
+			if fileText[k] >= 'A' && fileText[k] <= 'Z' {
+				str[j] = fileText[k] + 32
+				j++
+				k++
 			} else {
-				str[j] = fileText[i]
-				j--
-				i--
+				str[j] = fileText[k]
+				j++
+				k++
 			}
 		}
 		return str
@@ -84,11 +96,13 @@ func CorrectOccurence(fileText string, i int, occurence int, fileSize int) []byt
 			k--
 		}
 		str := make([]byte, i-(k-1))
+
 		if IsPonctuation([]byte(fileText), k) {
 			str[j] = fileText[k]
 		}
 		k++
 		j++
+
 		if fileText[k+1] >= 'a' && fileText[k+1] <= 'z' {
 			str[j] = fileText[k] - 32 // passage en maj de la lettre a l'indice k + 1 (apres l'espace)
 		}
