@@ -1,3 +1,3 @@
-vroom la voiture 1AD (hex) c'est sense etre ecrit 429
-et la 11110 (bin) c'est 30 aez1aeAez (up) AEA1OioA (low)
-maintenant c'est rengar (cap) et c'est sense mettre en maj le p de pour en maj
+la voiture .1AD (hex) c'est sense etre ecrit 429 ...
+et la ?11110 (bin) c'est 30 vroom ,aezaeAez (up, 2) :AEA1OioA (low)
+maintenant c'est !manger (cap) et c'est sense mettre en maj ?le m de manger

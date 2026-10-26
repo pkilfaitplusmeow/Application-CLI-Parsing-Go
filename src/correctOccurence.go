@@ -79,15 +79,20 @@ func CorrectOccurence(fileText string, i int, occurence int, fileSize int) []byt
 	if occurence == 5 {
 		j := 0
 		k := i
-		for fileText[k] != ' ' {
+
+		for fileText[k] != ' ' && !IsPonctuation([]byte(fileText), k) {
 			k--
 		}
 		str := make([]byte, i-(k-1))
+		if IsPonctuation([]byte(fileText), k) {
+			str[j] = fileText[k]
+		}
+		k++
+		j++
 		if fileText[k+1] >= 'a' && fileText[k+1] <= 'z' {
-			k++
-			j++
 			str[j] = fileText[k] - 32 // passage en maj de la lettre a l'indice k + 1 (apres l'espace)
 		}
+
 		j++
 		k++
 		for fileText[k] != ' ' {
