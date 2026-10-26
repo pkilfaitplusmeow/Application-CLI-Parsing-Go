@@ -9,22 +9,24 @@ func CorrectOccurence(fileText string, i int, occurence int, fileSize int) []byt
 
 	//dans le cas 1 (hex) retourne en arriere jusqu'au dernier espace et convertie en decimale
 	if occurence == 1 {
-		for fileText[i] != ' ' {
+		for fileText[i] != ' ' && !IsPonctuation([]byte(fileText), i) {
 			hexa += HexaCoverter(fileText, i, pow)
 			pow++ //puissance du 16
 			i--
 		}
 		deci_Val := DecimalToString(hexa)
+		deci_Val[0] = fileText[i]
 		return deci_Val
 	}
 	//dans le cas 2 (bin) ...
 	if occurence == 2 {
-		for fileText[i] != ' ' {
+		for fileText[i] != ' ' && !IsPonctuation([]byte(fileText), i) {
 			bin += BinConverter(fileText, i, pow)
 			pow++ //puissance du 2
 			i--
 		}
 		deci_Val := DecimalToString(bin)
+		deci_Val[0] = fileText[i]
 		return deci_Val
 	}
 	//dans le cas 3 (up)
